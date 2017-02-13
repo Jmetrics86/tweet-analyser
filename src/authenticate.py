@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import tweepy
-
+from tweepy import OAuthHandler, TweepError, API
 
 class Authorise:
     """Class to handle the authorisation and connection to Twitter"""
@@ -16,10 +15,10 @@ class Authorise:
         self.auth = ''
 
     def request_token(self):
-        self.auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret, self.callback_url)
+        self.auth = OAuthHandler(self.consumer_key, self.consumer_secret, self.callback_url)
         try:
             self.redirect_url = self.auth.get_authorization_url()
-        except tweepy.TweepError:
+        except TweepError:
             print("Error! Failed to get request token.")
         self.request_key = self.auth.request_token['oauth_token']
         self.request_secret = self.auth.request_token['oauth_token_secret']
@@ -28,7 +27,7 @@ class Authorise:
     def make_connection(self):
         try:
             self.auth.set_access_token(self.request_key, self.request_secret)
-            api = tweepy.API(self.auth)
+            api = API(self.auth)
         except:
             print("Error! Failed to authorise api connection.")
         return api
