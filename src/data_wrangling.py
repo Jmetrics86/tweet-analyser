@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 
+import nltk
 import re
+import string
+
+from nltk.corpus import stopwords
+
+nltk.download('stopwords')
 
 
-def emoticons():
-    """Defines regex string for emoticons"""
-    return r"""(?:[:=;][oO\-]?[D\)\]\(\]/\\OpP])"""
-
-
-def regex_emoticons(emoticons_str):
-    """Compile emoticon regex"""
-    return re.compile(r'^' + emoticons_str + '$', re.VERBOSE | re.IGNORECASE)
-
-
-def regex_tokens(emoticons_str):
+def regex_tokens():
     """Compile token regex"""
+
+    emoticons_str = r"""(?:[:=;][oO\-]?[D\)\]\(\]/\\OpP])"""
 
     regex_str = [
         emoticons_str,
@@ -36,5 +34,13 @@ def tokenize(tokens_re, string_to_tokenize):
     return tokens_re.findall(string_to_tokenize)
 
 
-def preprocess(string_to_process, lowercase=False):
-    tokens = tokenize(regex_emoticons())
+def preprocess(string_to_process):
+    tokens = tokenize(regex_tokens(), string_to_process)
+    tokens = [token.lower() for token in tokens]
+    return tokens
+
+
+def common_terms():
+    punctuation = list(string.punctuation)
+    stop_words = stopwords.words('english') + punctuation + ['rt', 'via', '…']
+    return stop_words

@@ -5,28 +5,24 @@ from tweepy import OAuthHandler, TweepError, API
 class Authorise:
     """Class to handle the authorisation and connection to Twitter"""
 
-    def __init__(self, consumer_key, consumer_secret):
+    def __init__(self, consumer_key, consumer_secret, token_key, token_secret):
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
-        self.redirect_url = ''
-        self.callback_url = ''
-        self.request_key = ''
-        self.request_secret = ''
+        self.token_key = token_key
+        self.token_secret = token_secret
         self.auth = ''
 
-    def request_token(self):
-        self.auth = OAuthHandler(self.consumer_key, self.consumer_secret, self.callback_url)
+    def request_auth(self):
         try:
-            self.redirect_url = self.auth.get_authorization_url()
+            self.auth = OAuthHandler(self.consumer_key, self.consumer_secret)
         except TweepError:
             print("Error! Failed to get request token.")
-        self.request_key = self.auth.request_token['oauth_token']
-        self.request_secret = self.auth.request_token['oauth_token_secret']
         return self
 
     def make_connection(self):
+        api = ''
         try:
-            self.auth.set_access_token(self.request_key, self.request_secret)
+            self.auth.set_access_token(self.token_key, self.token_secret)
             api = API(self.auth)
         except:
             print("Error! Failed to authorise api connection.")
@@ -34,7 +30,9 @@ class Authorise:
 
 
 if __name__ == '__main__':
-    consumer_key = input('Enter consumer key: ')
-    consumer_secret = input('Enter consumer secret: ')
+    c_key = input('Enter consumer key: ')
+    c_secret = input('Enter consumer secret: ')
+    t_key = input('Enter access-token key: ')
+    t_secret = input('Enter access-token secret: ')
 
-    twitter_connection = Authorise(consumer_key, consumer_secret).request_token().make_connection()
+    twitter_connection = Authorise(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
