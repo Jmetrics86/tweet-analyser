@@ -91,4 +91,4 @@ def document_processing(all_tweets):
 
         update_cooccurance(term_cooccurence, term_list)
 
-    return counters, term_cooccurence
+    return counters, term_cooccurence, doc_counter
