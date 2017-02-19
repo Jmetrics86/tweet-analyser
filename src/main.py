@@ -5,6 +5,7 @@ from configparser import RawConfigParser
 from src.authenticate import Authorise
 from src.data_analysis import top_cooccorrent_terms
 from src.data_sourcing import analysis_decider, data_router
+from src.data_visualisation import bar_chart
 from src.data_wrangling import document_processing
 
 if __name__ == '__main__':
@@ -25,3 +26,6 @@ if __name__ == '__main__':
     word_counters, co_occ_matrix = document_processing(all_tweets)
 
     top_pairs = top_cooccorrent_terms(co_occ_matrix)
+
+    most_common_terms = word_counters['terms_counter'].most_common(20)
+    bar_chart(most_common_terms)
