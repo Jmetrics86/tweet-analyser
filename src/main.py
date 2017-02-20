@@ -2,11 +2,11 @@
 
 from configparser import RawConfigParser
 
-from src.authenticate import Authorise
-from src.data_analysis import top_cooccorrent_terms, term_probabilities
-from src.data_sourcing import analysis_decider, data_router
 from src.data_visualisation import bar_chart
-from src.data_wrangling import document_processing
+from src.term_analysis import top_cooccorrent_terms, term_probabilities
+from src.text_wrangling import document_processing
+from src.twitter_authenticate import Authorise
+from src.twitter_sourcing import analysis_decider, data_router
 
 if __name__ == '__main__':
     api_connection = Authorise
