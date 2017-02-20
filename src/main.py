@@ -2,11 +2,11 @@
 
 from configparser import RawConfigParser
 
+from src.data_sourcing import analysis_decider, data_router
 from src.data_visualisation import bar_chart
-from src.term_analysis import top_cooccorrent_terms, term_probabilities
+from src.term_analysis import top_cooccorrent_terms, term_probabilities, get_lexicon
 from src.text_wrangling import document_processing
 from src.twitter_authenticate import Authorise
-from src.twitter_sourcing import analysis_decider, data_router
 
 if __name__ == '__main__':
     api_connection = Authorise
@@ -31,3 +31,5 @@ if __name__ == '__main__':
     bar_chart(most_common_terms)
 
     probability_of_terms = term_probabilities(total_docs, word_counters['all_counters'], co_occ_matrix)
+    positive_vocab, negative_vocab = get_lexicon()
+    

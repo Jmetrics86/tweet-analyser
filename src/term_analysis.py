@@ -3,6 +3,8 @@
 import operator
 from collections import defaultdict
 
+from src.data_sourcing import load_list
+
 
 def top_cooccorrent_terms(cooccurence_matrix):
     max_matrix = []
@@ -25,3 +27,9 @@ def term_probabilities(total_doc_count, all_terms_counter, term_cooccurence_matr
             prob_term_cooccurence_matrix[term1][term2] = term_cooccurence_matrix[term1][term2] / total_doc_count
 
     return prob_term_cooccurence_matrix
+
+
+def get_lexicon():
+    positive_lexicon = load_list('resources/positive-words.txt')
+    negative_lexicon = load_list('resources/negative-words.txt')
+    return positive_lexicon, negative_lexicon
