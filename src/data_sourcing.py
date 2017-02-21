@@ -7,21 +7,24 @@ from tweepy import Cursor, RateLimitError, TweepError
 
 def get_user(twitter_connection):
     """get user id from username"""
-    username = input("Please enter the twitter screen_name: ")
+    username = ""
+
+    while not username:
+        input("Please enter the twitter screen_name: ")
+
     user = twitter_connection.get_user(username)
     return user.id
 
 
 def get_hashtag():
     """get hashtag to search"""
-    hashtag = input("Please enter the hashtag to search with: ")
+    hashtag = ""
 
     while not hashtag:
-        print("Error! Hashtag cannot be empty.")
-        get_hashtag()
+        hashtag = input("Please enter the hashtag to search with: ")
 
     if hashtag[0] != '#':
-        hashtag = '#'.join(hashtag)
+        hashtag = "#" + str(hashtag)
     else:
         pass
 
@@ -61,7 +64,7 @@ def get_timeline(twitter_connection, user_id):
     return json_store
 
 
-def search_for_hashtag(twitter_connection, hashtag):
+def search_hashtag(twitter_connection, hashtag):
     json_store = []
     try:
         for status in Cursor(twitter_connection.search, q=hashtag).items():
@@ -79,7 +82,7 @@ def data_router(source_choice, api_connection):
         tweets = get_timeline(api_connection, user_id)
     elif source_choice == 2:
         hashtag = get_hashtag()
-        tweets = search_for_hashtag(api_connection, hashtag)
+        tweets = search_hashtag(api_connection, hashtag)
     else:
         tweets = ''
 
