@@ -90,5 +90,5 @@ def load_list(list_file):
     """function to load a \n-delimited list to list of strings"""
     with open(list_file, 'r') as file:
         string_list = file.read().splitlines()
-    list_file.close()
+    file.close()
     return string_list
