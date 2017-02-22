@@ -1,16 +1,38 @@
 # -*- coding: utf-8 -*-
 
-from src.text_wrangling import *
+from text_wrangling import *
 
 
 def test_tokenize():
-    test_string = "this is a string to tokenize"
-    test_hashtag = "#hashtag"
+    tokens_re = regex_tokens()
+
+    test_string = "This is a string to TOKENIZE"
+    test_hashtag = "#HashTag"
     test_emoji = ":)"
     test_url = "https://www.google.co.uk"
     test_tag = "@test"
     source_string = " ".join([test_string, test_hashtag, test_emoji, test_url, test_tag])
 
-    target = ['this', 'is', 'a', 'string', 'to', 'tokenize',
+    target = ['This', 'is', 'a', 'string', 'to', 'TOKENIZE',
+              '#HashTag', ':)', 'https://www.google.co.uk', '@test']
+    assert tokenize(tokens_re, source_string) == target
+
+
+def test_preprocess():
+    test_string = "This IS a DIFFERENT string 2 TOKENIZE"
+    test_hashtag = "#HashTag"
+    test_emoji = ":)"
+    test_url = "https://www.google.co.uk"
+    test_tag = "@test"
+    source_string = " ".join([test_string, test_hashtag, test_emoji, test_url, test_tag])
+
+    target = ['This', 'is', 'a', 'different', 'string', '2', 'tokenize',
               '#hashtag', ':)', 'https://www.google.co.uk', '@test']
-    assert tokenize('', source_string) == target
+
+    assert preprocess(source_string) == target
+
+
+def test_common_terms():
+    stopwords = common_terms()
+    for test_term in ['rt', 'via', 'a', 'the', 'i']:
+        assert test_term in stopwords
