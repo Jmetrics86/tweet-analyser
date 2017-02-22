@@ -1,19 +1,31 @@
 # -*- coding: utf-8 -*-
 
-import mock
+import unittest.mock
+from configparser import RawConfigParser
 
 from data_sourcing import *
+from twitter_authenticate import Authorise
 
 
 def test_get_user():
-    assert True is True
+    api_keys = RawConfigParser()
+    api_keys.read('resources/credentials.properties')
+    c_key = api_keys.get('apiKeys', 'consumer.key')
+    c_secret = api_keys.get('apiKeys', 'consumer.secret')
+    t_key = api_keys.get('apiKeys', 'accessToken.key')
+    t_secret = api_keys.get('apiKeys', 'accessToken.secret')
+
+    twitter_connection = Authorise(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
+
+    with unittest.mock.patch('builtins.input', return_value='jhole89'):
+        assert get_user(twitter_connection) == 3291780214
 
 
 def test_get_hashtag():
-    with mock.patch('builtins.input', lambda: "#TestHashtag"):
-        assert get_hashtag() == "#TestHashtag"
-    with mock.patch('builtins.input', lambda: "TestHashtag"):
-        assert get_hashtag() == "#TestHashtag"
+    with unittest.mock.patch('builtins.input', return_value='#TestHashtag'):
+        assert get_hashtag() == '#TestHashtag'
+    with unittest.mock.patch('builtins.input', return_value='TestHashtag'):
+        assert get_hashtag() == '#TestHashtag'
 
 
 def test_process_or_store():

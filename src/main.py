@@ -9,7 +9,6 @@ from text_wrangling import document_processing
 from twitter_authenticate import Authorise
 
 if __name__ == '__main__':
-    api_connection = Authorise
 
     api_keys = RawConfigParser()
     api_keys.read('resources/credentials.properties')
@@ -18,7 +17,7 @@ if __name__ == '__main__':
     t_key = api_keys.get('apiKeys', 'accessToken.key')
     t_secret = api_keys.get('apiKeys', 'accessToken.secret')
 
-    twitter_connection = api_connection(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
+    twitter_connection = Authorise(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
 
     source_choice = analysis_decider()
     all_tweets = data_router(source_choice, twitter_connection)

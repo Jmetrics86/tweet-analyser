@@ -2,6 +2,7 @@
 
 from tweepy import OAuthHandler, TweepError, API
 
+
 class Authorise:
     """Class to handle the authorisation and connection to Twitter"""
 
