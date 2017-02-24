@@ -3,6 +3,10 @@
 from text_wrangling import *
 
 
+def test_regex_tokens():
+    assert True is True
+
+
 def test_tokenize():
     tokens_re = regex_tokens()
 
@@ -34,5 +38,9 @@ def test_preprocess():
 
 def test_common_terms():
     stopwords = common_terms()
-    for test_term in ['rt', 'via', 'a', 'the', 'i']:
+    for test_term in ['rt', 'via', 'a', 'the', 'i', 'to']:
         assert test_term in stopwords
+
+
+def test_term_processing():
+    assert True is True
