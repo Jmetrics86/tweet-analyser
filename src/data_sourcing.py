@@ -6,7 +6,8 @@ from tweepy import Cursor, RateLimitError, TweepError
 
 
 def get_user(twitter_connection):
-    """get user id from username"""
+    """get user id from input username"""
+
     username = ""
 
     while not username:
@@ -17,9 +18,9 @@ def get_user(twitter_connection):
 
 
 def get_hashtag():
-    """get hashtag to search"""
-    hashtag = ""
+    """get hashtag to search from user input"""
 
+    hashtag = ""
     while not hashtag:
         hashtag = input("Please enter the hashtag to search with: ")
 
@@ -37,10 +38,15 @@ def process_or_store(tweet, store):
 
 
 def analysis_decider():
-    source_choice = int(input("Would you like to analyse the user timeline(1) or search for a term(2)?\n"))
-    while source_choice not in [1,2]:
-        print("Error! Acceptable inputs are 1 (timeline) or 2 (term)")
-        analysis_decider()
+    """Takes analysis choice from user"""
+
+    source_choice = 0
+    while source_choice not in [1, 2]:
+        source_choice = int(input("Would you like to analyse the user timeline(1) or search for a term(2)?\n"))
+
+        if source_choice not in [1, 2]:
+            print("Error! Acceptable inputs are 1 (timeline) or 2 (term)")
+
     return source_choice
 
 
@@ -53,6 +59,8 @@ def tweepy_sourcing_error():
 
 
 def get_timeline(twitter_connection, user_id):
+    """Reads specified user_timeline and returns a list of tweets"""
+
     json_store = []
     try:
         for status in Cursor(twitter_connection.user_timeline, id=user_id).items():
@@ -61,10 +69,13 @@ def get_timeline(twitter_connection, user_id):
         rate_error()
     except TweepError:
         tweepy_sourcing_error()
+
     return json_store
 
 
 def search_hashtag(twitter_connection, hashtag):
+    """Searches for specified hashtag and returns a list of tweets"""
+
     json_store = []
     try:
         for status in Cursor(twitter_connection.search, q=hashtag).items():
@@ -73,16 +84,21 @@ def search_hashtag(twitter_connection, hashtag):
         rate_error()
     except TweepError:
         tweepy_sourcing_error()
+
     return json_store
 
 
 def data_router(source_choice, api_connection):
+    """Routes analysis choice to relevant Cursor query method and passes back the list of tweets"""
+
     if source_choice == 1:
         user_id = get_user(api_connection)
         tweets = get_timeline(api_connection, user_id)
+
     elif source_choice == 2:
         hashtag = get_hashtag()
         tweets = search_hashtag(api_connection, hashtag)
+
     else:
         tweets = []
 
@@ -90,8 +106,10 @@ def data_router(source_choice, api_connection):
 
 
 def load_list(list_file):
-    """function to load a \n-delimited list to list of strings"""
+    """Loads a \n-delimited list and returns a list of strings"""
+
     with open(list_file, 'r') as file:
         string_list = file.read().splitlines()
     file.close()
+
     return string_list
