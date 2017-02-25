@@ -10,7 +10,7 @@ def get_user(twitter_connection):
     username = ""
 
     while not username:
-        input("Please enter the twitter screen_name: ")
+        username = input("Please enter the twitter screen_name: ")
 
     user = twitter_connection.get_user(username)
     return user.id
@@ -84,7 +84,7 @@ def data_router(source_choice, api_connection):
         hashtag = get_hashtag()
         tweets = search_hashtag(api_connection, hashtag)
     else:
-        tweets = ''
+        tweets = []
 
     return tweets
 

@@ -3,7 +3,7 @@
 from tweepy import OAuthHandler, TweepError, API
 
 
-class Authorise:
+class TwitterAuthenticate:
     """Class to handle the authorisation and connection to Twitter"""
 
     def __init__(self, consumer_key, consumer_secret, token_key, token_secret):
@@ -36,4 +36,4 @@ if __name__ == '__main__':
     t_key = input('Enter access-token key: ')
     t_secret = input('Enter access-token secret: ')
 
-    twitter_connection = Authorise(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
+    twitter_connection = TwitterAuthenticate(c_key, c_secret, t_key, t_secret).request_auth().make_connection()

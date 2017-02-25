@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from configparser import RawConfigParser
-
 import term_analysis
 from data_sourcing import analysis_decider, data_router
 from data_visualisation import bar_chart
 from text_wrangling import document_processing
-from twitter_authenticate import Authorise
+from utils.ConfigReader import ConfigReader
+from utils.TwitterAuthenticate import TwitterAuthenticate
 
 if __name__ == '__main__':
+    config = ConfigReader('resources/credentials.properties')
 
-    api_keys = RawConfigParser()
-    api_keys.read('resources/credentials.properties')
-    c_key = api_keys.get('apiKeys', 'consumer.key')
-    c_secret = api_keys.get('apiKeys', 'consumer.secret')
-    t_key = api_keys.get('apiKeys', 'accessToken.key')
-    t_secret = api_keys.get('apiKeys', 'accessToken.secret')
-
-    twitter_connection = Authorise(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
+    twitter_connection = TwitterAuthenticate(config.consumer_key, config.consumer_secret,
+                                             config.access_token_key, config.access_token_secret
+                                             ).request_auth().make_connection()
 
     source_choice = analysis_decider()
     all_tweets = data_router(source_choice, twitter_connection)

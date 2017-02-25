@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import unittest.mock
-from configparser import RawConfigParser
 
 from data_sourcing import *
-from twitter_authenticate import Authorise
+from utils.ConfigReader import ConfigReader
+from utils.TwitterAuthenticate import TwitterAuthenticate
 
 
 def test_get_user():
-    api_keys = RawConfigParser()
-    api_keys.read('resources/credentials.properties')
-    c_key = api_keys.get('apiKeys', 'consumer.key')
-    c_secret = api_keys.get('apiKeys', 'consumer.secret')
-    t_key = api_keys.get('apiKeys', 'accessToken.key')
-    t_secret = api_keys.get('apiKeys', 'accessToken.secret')
+    config = ConfigReader('resources/credentials.properties')
 
-    twitter_connection = Authorise(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
+    twitter_connection = TwitterAuthenticate(config.consumer_key, config.consumer_secret,
+                                             config.access_token_key, config.access_token_secret
+                                             ).request_auth().make_connection()
 
     with unittest.mock.patch('builtins.input', return_value='jhole89'):
         assert get_user(twitter_connection) == 3291780214
