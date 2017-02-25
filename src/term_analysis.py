@@ -4,7 +4,7 @@ from collections import defaultdict
 from math import log2
 from operator import itemgetter
 
-from src.data_sourcing import load_list
+from utils.ListLoader import ListLoader
 
 
 def top_cooccorrent_terms(cooccurence_matrix):
@@ -42,8 +42,8 @@ def calculate_pmi(probability_term, cooccurrence_matrix, prob_term_cooccurence_m
 
 def calculate_semantic_orientation(probability_term, pmi):
     semantic_orientation = {}
-    positive_lexicon = load_list('resources/positive-words.txt')
-    negative_lexicon = load_list('resources/negative-words.txt')
+    positive_lexicon = ListLoader().load('resources/positive-words.txt')
+    negative_lexicon = ListLoader().load('resources/negative-words.txt')
 
     for term, n in probability_term.items():
         positive_assoc = sum(pmi[term][word] for word in positive_lexicon)

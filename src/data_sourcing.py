@@ -103,13 +103,3 @@ def data_router(source_choice, api_connection):
         tweets = []
 
     return tweets
-
-
-def load_list(list_file):
-    """Loads a \n-delimited list and returns a list of strings"""
-
-    with open(list_file, 'r') as file:
-        string_list = file.read().splitlines()
-    file.close()
-
-    return string_list

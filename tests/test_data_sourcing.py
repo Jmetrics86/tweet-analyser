@@ -114,11 +114,3 @@ def test_data_router():
         assert data_router(2, connection)
 
     assert not data_router(3, connection)
-
-
-def test_load_list():
-    """Test should read a newline-delimited file and return a list of strings"""
-
-    target_string_list = ['this', 'is', 'a', 'testfile', 'in', 'newline', 'delimited', 'format']
-
-    assert load_list('resources/test_listfile.txt') == target_string_list
