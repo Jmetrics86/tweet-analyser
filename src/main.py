@@ -2,6 +2,7 @@
 
 import term_analysis as ta
 from data_sourcing import analysis_decider, data_router
+from report.report_manager import generate_report
 from text_wrangling import document_processing
 from utils.ConfigReader import ConfigReader
 from utils.TwitterAuthenticate import TwitterAuthenticate
@@ -21,7 +22,7 @@ if __name__ == '__main__':
     top_pairs = ta.top_cooccorrent_terms(co_occ_matrix)
 
     most_common_terms = word_counters['terms_counter'].most_common(20)
-    # bar_chart(most_common_terms)
+    generate_report(most_common_terms)
 
     prob_term_matrix, prob_terms = ta.term_probabilities(total_docs, word_counters['all_counter'], co_occ_matrix)
 
