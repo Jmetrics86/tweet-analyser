@@ -55,30 +55,14 @@ def test_analysis_decider():
         assert analysis_decider() == 2
 
 
-def test_rate_error(capfd):
-    """Test should raise a rate limit exception"""
-
-    tweepy_sourcing_error()
-    out, err = capfd.readouterr()
-
-    assert out == "Error! Twitter rate limit reach. Wait 15 mins and try again."
-
-
-def test_tweepy_sourcing_error(capfd):
-    """Test should raise a sourcing exception"""
-
-    tweepy_sourcing_error()
-    out, err = capfd.readouterr()
-
-    assert out == "Error! Unable to retrieve tweets."
-
-
 def test_get_timeline():
     """Test should return stored tweets from a specified user timeline"""
+
     config = ConfigReader('resources/credentials.properties')
     connection = TwitterAuthenticate(config.consumer_key, config.consumer_secret,
                                      config.access_token_key, config.access_token_secret
                                      ).request_auth().make_connection()
+
     user_id = 3291780214
     stored_tweets = get_timeline(connection, user_id)
 

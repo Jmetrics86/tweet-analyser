@@ -4,6 +4,8 @@ import json
 
 from tweepy import Cursor, RateLimitError, TweepError
 
+from exceptions.sourcing import rate_error, tweepy_sourcing_error
+
 
 def get_user(twitter_connection):
     """get user id from input username"""
@@ -48,14 +50,6 @@ def analysis_decider():
             print("Error! Acceptable inputs are 1 (timeline) or 2 (term)")
 
     return source_choice
-
-
-def rate_error():
-    print("Error! Twitter rate limit reach. Wait 15 mins and try again.")
-
-
-def tweepy_sourcing_error():
-    print("Error! Unable to retrieve tweets.")
 
 
 def get_timeline(twitter_connection, user_id):
