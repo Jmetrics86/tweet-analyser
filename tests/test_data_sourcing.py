@@ -38,7 +38,10 @@ def test_process_or_store():
 
 
 def test_analysis_decider():
-    assert True is True
+    with unittest.mock.patch('builtins.input', return_value='1'):
+        assert analysis_decider() == 1
+    with unittest.mock.patch('builtins.input', return_value='2'):
+        assert analysis_decider() == 2
 
 
 def test_rate_error(capfd):
@@ -54,7 +57,14 @@ def test_tweepy_sourcing_error(capfd):
 
 
 def test_get_timeline():
-    assert True is True
+    config = ConfigReader('resources/credentials.properties')
+    connection = TwitterAuthenticate(config.consumer_key, config.consumer_secret,
+                                     config.access_token_key, config.access_token_secret
+                                     ).request_auth().make_connection()
+    user_id = get_user(connection)
+    stored_tweets = get_timeline(connection, user_id)
+
+    assert stored_tweets
 
 
 def test_search_hashtag():
