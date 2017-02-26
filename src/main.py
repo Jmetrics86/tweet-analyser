@@ -25,6 +25,6 @@ if __name__ == '__main__':
 
     prob_term_matrix, prob_terms = ta.term_probabilities(total_docs, word_counters['all_counter'], co_occ_matrix)
 
-    pointwise_MI = ta.calculate_pmi(prob_terms, co_occ_matrix, prob_term_matrix)
-    semantic_orientation = ta.calculate_semantic_orientation(prob_terms, pointwise_MI)
+    pmi = ta.calculate_pmi(prob_terms, co_occ_matrix, prob_term_matrix)
+    semantic_orientation = ta.semantic_orientation(prob_terms, pmi)
     top_positive_terms, top_negative_terms = ta.top_semantic_terms(semantic_orientation, 10)
