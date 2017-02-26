@@ -55,20 +55,27 @@ def common_terms():
 
 
 def term_processing(all_terms, stop_words):
-    """Processes all terms in a tweet into lists of hashtags and uncommon terms"""
+    """Processes all terms in a tweet into lists of hashtags, usertags and uncommon terms"""
 
     hashtags = []
+    usertags = []
     uncommon_terms = []
 
     for term in all_terms:
+
         if term.startswith('#'):
             hashtags.append(term)
+
+        elif term.startswith('@'):
+            usertags.append(term)
+
         elif term not in stop_words and not term.startswith(('#', '@')):
             uncommon_terms.append(term)
+
         else:
             pass
 
-    return hashtags, uncommon_terms
+    return hashtags, usertags, uncommon_terms
 
 
 def update_cooccurance(cooccurence_matrix, terms_list):
@@ -92,7 +99,8 @@ def document_processing(all_tweets):
 
     counters = {'all_counter': Counter(),
                 'terms_counter': Counter(),
-                'hashtag_counter': Counter()}
+                'hashtag_counter': Counter(),
+                'tag_counter': Counter()}
     term_cooccurence = defaultdict(lambda: defaultdict(int))
     doc_counter = 0
 
@@ -104,8 +112,9 @@ def document_processing(all_tweets):
         all_terms = [term for term in preprocess(tweet['text'])]
         counters['all_counter'].update(all_terms)
 
-        hashtag_list, term_list = term_processing(all_terms, stop_words)
+        hashtag_list, tag_list, term_list = term_processing(all_terms, stop_words)
         counters['hashtag_counter'].update(hashtag_list)
+        counters['tag_counter'].update(tag_list)
         counters['terms_counter'].update(term_list)
 
         update_cooccurance(term_cooccurence, term_list)

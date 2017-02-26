@@ -21,6 +21,8 @@ if __name__ == '__main__':
     top_pairs = ta.top_cooccorrent_terms(co_occ_matrix)
 
     most_common_terms = word_counters['terms_counter'].most_common(20)
+    most_common_hashtags = word_counters['hashtag_counter'].most_common(20)
+    most_common_RT = word_counters['tag_counter'].most_common(20)
     # generate_report(most_common_terms)
 
     prob_term_matrix, prob_terms = ta.term_probabilities(total_docs, word_counters['all_counter'], co_occ_matrix)
