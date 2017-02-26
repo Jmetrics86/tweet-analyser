@@ -8,22 +8,30 @@ from utils.ListLoader import ListLoader
 
 
 def top_cooccorrent_terms(cooccurence_matrix):
-    max_matrix = []
-    # For each term, look for the most common co-occurrent terms
+    """Iterates through each combination of words and returns most frequently paired terms"""
+
+    max_term_matrix = []
+
     for term1 in cooccurence_matrix:
         term1_max_terms = sorted(cooccurence_matrix[term1].items(), key=itemgetter(1), reverse=True)[:5]
+
         for term2, term2_count in term1_max_terms:
-            max_matrix.append(((term1, term2), term2_count))
-    terms_max = sorted(max_matrix, key=itemgetter(1), reverse=True)
+            max_term_matrix.append(((term1, term2), term2_count))
+
+    terms_max = sorted(max_term_matrix, key=itemgetter(1), reverse=True)
+
     return terms_max
 
 
 def term_probabilities(total_doc_count, all_terms_counter, term_cooccurence_matrix):
+    """Iterates through all terms and returns P(term occurring) and P(pair_terms occurring)"""
+
     probability_term = {}
     prob_term_cooccurence_matrix = defaultdict(lambda: defaultdict(int))
 
     for term1, term1_frequency in all_terms_counter.items():
         probability_term[term1] = term1_frequency / total_doc_count
+
         for term2 in term_cooccurence_matrix[term1]:
             prob_term_cooccurence_matrix[term1][term2] = term_cooccurence_matrix[term1][term2] / total_doc_count
 
@@ -31,12 +39,19 @@ def term_probabilities(total_doc_count, all_terms_counter, term_cooccurence_matr
 
 
 def calculate_pmi(probability_term, cooccurrence_matrix, prob_term_cooccurence_matrix):
-    """Calculates the Pointwise Mutual Information of each pair of terms occurring together"""
+    """
+    Iterates through P(terms occurring).
+    Calculates the Pointwise Mutual Information of each pair of terms occurring together
+    """
+
     pmi = defaultdict(lambda: defaultdict(int))
+
     for term1 in probability_term:
+
         for term2 in cooccurrence_matrix[term1]:
             denom = probability_term[term1] * probability_term[term2]
             pmi[term1][term2] = log2(prob_term_cooccurence_matrix[term1][term2] / denom)
+
     return pmi
 
 

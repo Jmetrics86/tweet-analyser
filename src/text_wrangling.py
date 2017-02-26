@@ -37,18 +37,26 @@ def tokenize(tokens_re, string_to_tokenize):
 
 
 def preprocess(string_to_process):
+    """Pre-processes strings into standardised lowercase tokens"""
+
     tokens = tokenize(regex_tokens(), string_to_process)
     tokens = [token.lower() for token in tokens]
+
     return tokens
 
 
 def common_terms():
+    """Generates list of common english stop words and punctuation"""
+
     punctuation = list(string.punctuation)
     stop_words = stopwords.words('english') + punctuation + ['rt', 'via', '…']
+
     return stop_words
 
 
 def term_processing(all_terms, stop_words):
+    """Processes all terms in a tweet into lists of hashtags and uncommon terms"""
+
     hashtags = []
     uncommon_terms = []
 
@@ -64,18 +72,29 @@ def term_processing(all_terms, stop_words):
 
 
 def update_cooccurance(cooccurence_matrix, terms_list):
-    for current_term_position in range(len(terms_list) - 1):
-        for next_term_position in range(len(terms_list)):
-            word1, word2 = sorted([terms_list[current_term_position], terms_list[next_term_position]])
+    """Iterates through single tweet and updates co-occurance matrix for words appearing in same message"""
+
+    for term_position1 in range(len(terms_list) - 1):
+
+        for term_position2 in range(len(terms_list)):
+
+            word1, word2 = sorted([terms_list[term_position1], terms_list[term_position2]])
+
             if word1 != word2:
                 cooccurence_matrix[word1][word2] += 1
 
 
 def document_processing(all_tweets):
+    """
+    Main processing function.
+    Iterates all docs/tweets and returns counters of terms, and term co-occurance matrix
+    """
+
     counters = {'all_counter': Counter(),
                 'terms_counter': Counter(),
                 'hashtag_counter': Counter()}
     term_cooccurence = defaultdict(lambda: defaultdict(int))
+    doc_counter = 0
 
     stop_words = common_terms()
 
