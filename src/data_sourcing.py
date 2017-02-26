@@ -43,13 +43,13 @@ def analysis_decider():
     """Takes analysis choice from user"""
 
     source_choice = 0
-    while source_choice not in [1, 2]:
-        source_choice = int(input("Would you like to analyse the user timeline(1) or search for a term(2)?\n"))
+    while source_choice not in ['1', '2']:
+        source_choice = input("Would you like to analyse the user timeline(1) or search for a term(2)?\n")
 
-        if source_choice not in [1, 2]:
+        if source_choice not in ['1', '2']:
             print("Error! Acceptable inputs are 1 (timeline) or 2 (term)")
 
-    return source_choice
+    return int(source_choice)
 
 
 def get_timeline(twitter_connection, user_id):
