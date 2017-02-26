@@ -16,6 +16,7 @@ def get_user(twitter_connection):
         username = input("Please enter the twitter screen_name: ")
 
     user = twitter_connection.get_user(username)
+
     return user.id
 
 

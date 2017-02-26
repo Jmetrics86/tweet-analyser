@@ -3,14 +3,14 @@
 import vincent
 
 
-def bar_chart(key_freq):
+def bar_chart(source, key_freq):
     """Generates JSON document for bar chart visualisation using vincent"""
 
     labels, freq = zip(*key_freq)
     data = {'data': freq, 'x': labels}
 
     bar = vincent.Bar(data, iter_idx='x')
-    bar.to_json('report/term_freq.json')
+    bar.to_json('report/%s_freq.json' % source)
 
 
 def timeseries_chart(pandas_timeseries):
