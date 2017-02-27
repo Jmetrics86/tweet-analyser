@@ -23,8 +23,8 @@ if __name__ == '__main__':
     top_pairs = ta.top_cooccorrent_terms(co_occ_matrix)
 
     most_common_terms = word_counters['terms_counter'].most_common(20)
-    most_common_hashtags = word_counters['hashtag_counter'].most_common(20)
-    most_common_RT = word_counters['tag_counter'].most_common(20)
+    most_common_hashtags = word_counters['hashtag_counter'].most_common(10)
+    most_common_RT = word_counters['tag_counter'].most_common(10)
 
     bar_chart('top_terms', most_common_terms)
     bar_chart('top_hashtags', most_common_hashtags)
