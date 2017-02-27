@@ -7,15 +7,18 @@
     <script src="http://trifacta.github.com/vega/vega.js"></script>
 </head>
 <body>
-<div id="vis"></div>
+<div id="topTerms"></div>
+<div id="topHashtags"></div>
+<div id="topUsertags"></div>
 </body>
 <script type="text/javascript">
 // parse a spec and create a visualization view
-function parse(spec) {
-  vg.parse.spec(spec, function(chart) { chart({el:"#vis"}).update(); });
+function parse(container, spec) {
+  vg.parse.spec(spec, function(chart) { chart({el:container}).update(); });
 }
-parse("top_terms_freq.json");
-parse("top_hashtags_freq.json");
+parse("#topTerms","top_terms_freq.json");
+parse("#topHashtags","top_hashtags_freq.json");
+parse("#topUsertags","top_usertags_freq.json");
 
 </script>
 </html>

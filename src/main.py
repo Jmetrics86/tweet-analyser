@@ -28,6 +28,7 @@ if __name__ == '__main__':
 
     bar_chart('top_terms', most_common_terms)
     bar_chart('top_hashtags', most_common_hashtags)
+    bar_chart('top_usertags', most_common_RT)
     ReportManager('user').run_report(5)
 
     prob_term_matrix, prob_terms = ta.term_probabilities(total_docs, word_counters['all_counter'], co_occ_matrix)
