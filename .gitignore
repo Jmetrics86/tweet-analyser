@@ -90,3 +90,4 @@ ENV/
 
 # Property files
 credentials.properties
+*_freq.json
