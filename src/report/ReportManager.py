@@ -2,7 +2,7 @@
 
 import time
 
-from report.web_server import WebServer
+from report.WebServer import WebServer
 
 
 class ReportManager:
