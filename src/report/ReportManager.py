@@ -2,7 +2,7 @@
 
 import time
 
-from utils.WebServer import WebServer
+from utils.SimpleHTTPWebServer import SimpleHTTPWebServer
 
 
 class ReportManager:
@@ -12,7 +12,7 @@ class ReportManager:
         self.report_style = style
 
     def prepare_report(self):
-        WebServer().start_server()
+        SimpleHTTPWebServer('localhost', 8000).start_server()
 
     def run_report(self, minutes_to_wait):
         self.prepare_report()

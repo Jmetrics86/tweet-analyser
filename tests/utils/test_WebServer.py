@@ -1,34 +1,29 @@
-import http.server
-import socketserver
+import threading
 
-from utils.WebServer import WebServer
+import requests
+
+from utils.SimpleHTTPWebServer import SimpleHTTPWebServer
 
 
-def test_web_server():
+class TestWebServer:
     """Test should define the webserver"""
 
-    test_server = WebServer()
+    def test_start_server(self):
+        """Test should start an instance of the SimpleHTTPServer"""
 
-    assert test_server.port == 8000
-    assert test_server.handler == http.server.SimpleHTTPRequestHandler
-    assert test_server.httpd == socketserver.TCPServer(("", 8000), http.server.SimpleHTTPRequestHandler)
+        test_server = SimpleHTTPWebServer('localhost', 8000)
+        threading._start_new_thread(test_server.start_server())
 
+        req = requests.get('localhost:8000')
+        assert req.status_code == 200
 
-def test_start_server():
-    """Test should start an instance of the SimpleHTTPServer"""
+    def test_stop_server(self):
+        """Test should shutdown an instance of the SimpleHTTPServer"""
 
-    test_server = WebServer()
-    test_server.start_server()
-    assert True
-
-
-def test_stop_server():
-    """Test should shutdown an instance of the SimpleHTTPServer"""
-
-    test_server = WebServer()
-    test_server.start_server()
-    test_server.stop_server()
-    assert True
+        test_server = SimpleHTTPWebServer('localhost', 8000)
+        test_server.start_server()
+        test_server.stop_server()
+        assert True
 
 
-test_start_server()
+TestWebServer().test_start_server()
