@@ -102,7 +102,7 @@ def document_processing(all_tweets):
                 'hashtag_counter': Counter(),
                 'tag_counter': Counter()}
     term_cooccurence = defaultdict(lambda: defaultdict(int))
-    doc_counter = 0
+    dates = []
 
     stop_words = common_terms()
 
@@ -117,6 +117,14 @@ def document_processing(all_tweets):
         counters['tag_counter'].update(tag_list)
         counters['terms_counter'].update(term_list)
 
+        dates.append(tweet['created_at'])
+
         update_cooccurance(term_cooccurence, term_list)
 
-    return counters, term_cooccurence, doc_counter
+    try:
+        counters['doc_counter'] = doc_counter
+
+    except ValueError:
+        counters['doc_counter'] = 0
+
+    return counters, dates, term_cooccurence

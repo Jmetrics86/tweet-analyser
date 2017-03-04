@@ -53,12 +53,12 @@ def analysis_decider():
     return int(source_choice)
 
 
-def get_timeline(twitter_connection, user_id):
+def get_timeline(twitter_connection, user_id, items=1):
     """Reads specified user_timeline and returns a list of tweets"""
 
     json_store = []
     try:
-        for status in Cursor(twitter_connection.user_timeline, id=user_id).items():
+        for status in Cursor(twitter_connection.user_timeline, id=user_id).items(items):
             process_or_store(status._json, json_store)
     except RateLimitError:
         rate_error()
@@ -68,12 +68,12 @@ def get_timeline(twitter_connection, user_id):
     return json_store
 
 
-def search_hashtag(twitter_connection, hashtag):
+def search_hashtag(twitter_connection, hashtag, items=1):
     """Searches for specified hashtag and returns a list of tweets"""
 
     json_store = []
     try:
-        for status in Cursor(twitter_connection.search, q=hashtag).items():
+        for status in Cursor(twitter_connection.search, q=hashtag).items(items):
             process_or_store(status._json, json_store)
     except RateLimitError:
         rate_error()
@@ -88,11 +88,11 @@ def data_router(source_choice, api_connection):
 
     if source_choice == 1:
         user_id = get_user(api_connection)
-        tweets = get_timeline(api_connection, user_id)
+        tweets = get_timeline(api_connection, user_id, items=200)
 
     elif source_choice == 2:
         hashtag = get_hashtag()
-        tweets = search_hashtag(api_connection, hashtag)
+        tweets = search_hashtag(api_connection, hashtag, items=200)
 
     else:
         tweets = []

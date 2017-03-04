@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import threading
 import time
 
 from utils.SimpleHTTPWebServer import SimpleHTTPWebServer
@@ -11,11 +12,14 @@ class ReportManager:
     def __init__(self, style):
         self.report_style = style
 
-    def prepare_report(self):
-        SimpleHTTPWebServer('localhost', 8000).start_server()
+    def run_report(self, minutes_to_wait, url, port):
+        server = SimpleHTTPWebServer(url, port)
+        threading.Thread(target=server.start_server).start()
 
-    def run_report(self, minutes_to_wait):
-        self.prepare_report()
-        print("Report ready to view at http://localhost:8888/report/chart.html \n"
-              "Report will be available for the next %s minutes" % minutes_to_wait)
+        print("Report ready to view at http://%s:%d/report/chart.html \n"
+              "Report will be available for the next %s minutes" % (url, port, minutes_to_wait))
         time.sleep(minutes_to_wait * 60)
+
+        assassin = threading.Thread(target=server.stop_server)
+        assassin.daemon = True
+        assassin.start()

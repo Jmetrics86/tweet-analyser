@@ -4,6 +4,8 @@ from collections import defaultdict
 from math import log2
 from operator import itemgetter
 
+import pandas
+
 from utils.ListLoader import ListLoader
 
 
@@ -80,3 +82,13 @@ def top_semantic_terms(semantic_orientation_dict, num_terms):
     top_negative = semantic_sorted[-num_terms:]
 
     return top_positive, top_negative
+
+
+def tweet_timeseries(timeseries_dates):
+    ones = [1] * len(timeseries_dates)
+    idx = pandas.DatetimeIndex(timeseries_dates)
+    series = pandas.DataFrame(ones, idx)
+
+    per_day = series.resample('W').sum().fillna(0)
+
+    return per_day
