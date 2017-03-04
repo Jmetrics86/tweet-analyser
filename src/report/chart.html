@@ -8,27 +8,33 @@
 </head>
 <body>
 <center><h1>Twitter Analysis Report</h1></center>
-<h2>Top 20 Terms</h2>
+
+<h2>Tweet Timeline</h2>
+<div id="timeline"></div>
+
+<h2>Top Terms</h2>
 <div id="topTerms"></div>
 
-<h2>Top 10 HashTags</h2>
+<h2>Top Term-Pairs</h2>
+<div id="topPairs"></div>
+
+<h2>Top HashTags</h2>
 <div id="topHashtags"></div>
 
-<h2>Top 10 UserTags</h2>
+<h2>Top UserTags</h2>
 <div id="topUsertags"></div>
 
-<h2>Tweet timeline</h2>
-<div id="timeline"></div>
 </body>
 <script type="text/javascript">
 // parse a spec and create a visualization view
 function parse(container, spec) {
   vg.parse.spec(spec, function(chart) { chart({el:container}).update(); });
 }
+parse("#timeline","time_series.json");
 parse("#topTerms","top_terms_freq.json");
+parse("#topPairs","top_pairs_freq.json");
 parse("#topHashtags","top_hashtags_freq.json");
 parse("#topUsertags","top_usertags_freq.json");
-parse("#timeline","time_series.json");
 
 </script>
 </html>
