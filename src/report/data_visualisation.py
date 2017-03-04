@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import json
+
 import vincent
 
 
@@ -20,3 +22,10 @@ def timeseries_chart(pandas_timeseries):
     time_chart.axis_titles(x='Time', y='Freq')
 
     time_chart.to_json('report/time_series.json')
+
+
+def key_value_table(tuple_list):
+    """Generates JSON document for table visualisation"""
+
+    with open('report/semantic_terms.json', 'w') as semantic_json:
+        json.dump(dict(tuple_list), semantic_json)

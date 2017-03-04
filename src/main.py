@@ -3,7 +3,7 @@
 import term_analysis as ta
 from data_sourcing import analysis_decider, data_router
 from report.ReportManager import ReportManager
-from report.data_visualisation import bar_chart, timeseries_chart
+from report.data_visualisation import bar_chart, timeseries_chart, key_value_table
 from text_wrangling import document_processing
 from utils.ConfigReader import ConfigReader
 from utils.TwitterAuthenticate import TwitterAuthenticate
@@ -37,6 +37,7 @@ if __name__ == '__main__':
     print(top_negative_terms)
 
     # Generate vincent graphs for aggregated data
+    key_value_table(top_positive_terms + top_negative_terms)
     timeseries_chart(ta.tweet_timeseries(tweet_dates))
     bar_chart('top_terms', word_counters['terms_counter'].most_common(10))
     bar_chart('top_pairs', ta.top_cooccorrent_terms(co_occ_matrix)[:10])
@@ -44,4 +45,4 @@ if __name__ == '__main__':
     bar_chart('top_usertags', word_counters['tag_counter'].most_common(10))
 
     # Run report on local webserver
-    ReportManager('user').run_report(1, 'localhost', 8000)
+    ReportManager('user').run_report(2, 'localhost', 8000)

@@ -37,7 +37,7 @@ def get_hashtag():
 
 def process_or_store(tweet, store):
     """process or store tweet data"""
-    store.append(json.dumps(tweet, indent=4))
+    store.append(json.dumps(tweet))
 
 
 def analysis_decider():
