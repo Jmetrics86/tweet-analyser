@@ -4,10 +4,9 @@
     padding: 1px 4px;
     border: 1px black solid;
 }
-
 </style>
 <head>
-    <title>Twitter Analysis Report</title>
+    <title>Tweet Analysis Report</title>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="http://d3js.org/d3.geo.projection.v0.min.js" charset="utf-8"></script>
@@ -15,12 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
-<center><h1>Tweet Analysis Report</h1></center>
+<center>
+    <h1>Tweet Analysis Report</h1>
 
 <h2>Tweet Timeline</h2>
 <div id="timeline"></div>
-
-<div id="semanticScore"></div>
 
 <h2>Top Terms</h2>
 <div id="topTerms"></div>
@@ -34,6 +32,9 @@
 <h2>Top UserTags</h2>
 <div id="topUsertags"></div>
 
+    <h2>Top Positive/Negative Terms</h2>
+    <div id="semanticScore"></div>
+</center>
 </body>
 <script type="text/javascript">
   // parse a spec and create a visualization view

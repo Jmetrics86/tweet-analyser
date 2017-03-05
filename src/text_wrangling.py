@@ -118,13 +118,7 @@ def document_processing(all_tweets):
         counters['terms_counter'].update(term_list)
 
         dates.append(tweet['created_at'])
-
         update_cooccurance(term_cooccurence, term_list)
-
-    try:
         counters['doc_counter'] = doc_counter
-
-    except ValueError:
-        counters['doc_counter'] = 0
 
     return counters, dates, term_cooccurence
