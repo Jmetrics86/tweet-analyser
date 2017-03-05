@@ -68,7 +68,7 @@ def semantic_orientation(probability_term, pmi):
         positive_assoc = sum(pmi[term][word] for word in positive_lexicon)
         negative_assoc = sum(pmi[term][word] for word in negative_lexicon)
 
-        semantic_orientation[term] = positive_assoc - negative_assoc
+        semantic_orientation[term] = round(positive_assoc - negative_assoc, 2)
 
     return semantic_orientation
 
