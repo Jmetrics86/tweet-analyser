@@ -45,7 +45,8 @@ def analysis_decider():
 
     source_choice = 0
     while source_choice not in ['1', '2']:
-        source_choice = input("Would you like to analyse the user timeline(1) or search for a term(2)?\n")
+        source_choice = input(
+            "Would you like to analyse a user timeline(1) or search a hashtag(2)?")
 
         if source_choice not in ['1', '2']:
             print("Error! Acceptable inputs are 1 (timeline) or 2 (term)")

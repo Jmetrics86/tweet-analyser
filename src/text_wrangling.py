@@ -79,7 +79,9 @@ def term_processing(all_terms, stop_words):
 
 
 def update_cooccurance(cooccurence_matrix, terms_list):
-    """Iterates through single tweet and updates co-occurance matrix for words appearing in same message"""
+    """
+    Iterates through each tweet and updates co-occurance matrix for words appearing in same message
+    """
 
     for term_position1 in range(len(terms_list) - 1):
 

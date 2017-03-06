@@ -36,4 +36,5 @@ if __name__ == '__main__':
     t_key = input('Enter access-token key: ')
     t_secret = input('Enter access-token secret: ')
 
-    twitter_connection = TwitterAuthenticate(c_key, c_secret, t_key, t_secret).request_auth().make_connection()
+    twitter_connection = \
+        TwitterAuthenticate(c_key, c_secret, t_key, t_secret).request_auth().make_connection()

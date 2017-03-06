@@ -20,8 +20,11 @@ class TestTwitterAuthenticate:
 
     def test_request_auth(self):
         config = ConfigReader('resources/credentials.properties')
-        authoriser = TwitterAuthenticate(config.consumer_key, config.consumer_secret,
-                                         config.access_token_key, config.access_token_secret).request_auth()
+
+        authoriser = TwitterAuthenticate(
+            config.consumer_key, config.consumer_secret,
+            config.access_token_key, config.access_token_secret
+        ).request_auth()
 
         assert authoriser.auth
 

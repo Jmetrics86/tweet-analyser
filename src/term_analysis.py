@@ -15,7 +15,11 @@ def top_cooccorrent_terms(cooccurence_matrix):
     max_term_matrix = []
 
     for term1 in cooccurence_matrix:
-        term1_max_terms = sorted(cooccurence_matrix[term1].items(), key=itemgetter(1), reverse=True)[:5]
+
+        term1_max_terms = sorted(
+            cooccurence_matrix[term1].items(),
+            key=itemgetter(1),
+            reverse=True)[:5]
 
         for term2, term2_count in term1_max_terms:
             max_term_matrix.append(((term1, term2), term2_count))
@@ -35,7 +39,8 @@ def term_probabilities(total_doc_count, all_terms_counter, term_cooccurence_matr
         probability_term[term1] = term1_frequency / total_doc_count
 
         for term2 in term_cooccurence_matrix[term1]:
-            prob_term_cooccurence_matrix[term1][term2] = term_cooccurence_matrix[term1][term2] / total_doc_count
+            prob_term_cooccurence_matrix[term1][term2] = \
+                term_cooccurence_matrix[term1][term2] / total_doc_count
 
     return prob_term_cooccurence_matrix, probability_term
 

@@ -15,36 +15,47 @@ neutral each term is.
 
 ## Getting Started
 
-Clone the repo:
-
-https://github.com/jhole89/twitterAnalyser.git
-
 ### Prerequisites
 
-Python 3.5+ (https://www.python.org/downloads/)
+* Python 3.5+ (https://www.python.org/downloads/)
 
-Twitter keys
+* Twitter OAuth access tokens (https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 
 ### Installing
 
+1. Install Python3 on your Operating System as per the Python Docs. Continuum's Anaconda distribution is recommended.
+
+2. Clone the repo: `git clone https://github.com/jhole89/tweet-analyser.git`
+
+3. Create a credentials.properties file based on the template in src/resources with your Twitter OAuth consumer and
+access tokens as per the prerequisites
+
+4. Set the environment:
+
+5. Run the application: `python src/main.py`
+
 ## Running the tests
 
-pytest <individual test>
+We use PyTest as our test framework
 
-### Break down into end to end tests
+### Test Coverage
 
 pytest <all>
 
-### And coding style tests
+### Coding style
 
-PEP8
+Tweet Analyser is PEP8 complaint but uses a max-line-length=100.  This can be checked from the command line with:
+```bash
+pep8 --statistics --max-line-length=100 twitterAnalyser
+```
 
 ## Built With
 
-* [Tweepy]
-* [Pandas]
-* [Vincent]
-* [d3]
+* [Python3](https://www.python.org/downloads/) [(Anaconda)](https://www.continuum.io/downloads)
+* [Tweepy](https://github.com/tweepy/tweepy)
+* [Pandas](http://pandas.pydata.org/)
+* [Vincent](https://vincent.readthedocs.io/en/latest/)
+* [d3.js](https://d3js.org/)
 
 ## Contributing
 
@@ -54,7 +65,7 @@ Pull Requests. Any further development or Fork of this project is bound by the s
 
 ## Authors
 
-* **Joel Lutman** - *Initial work* - [jhole89](https://github.com/jhole89)
+* **Joel Lutman**
 
 ## License
 
@@ -62,5 +73,5 @@ This project is licensed under the GNU GPL3 License - see the [LICENSE](LICENSE)
 
 ## Acknowledgments
 
-* Marco - inspired by blah
-* Lexicon
+* We make use of the excellent [Opinion Lexicon](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#lexicon) by Minqing Hu and Bing Liu - <i>Mining and Summarizing Customer Reviews (KDD-2004)</i>
+* This piece of work was inspired by the work of Marco Bonzanini's <i>[Mining Twitter Data with Python](https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/)</i>

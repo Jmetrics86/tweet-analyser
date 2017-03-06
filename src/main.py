@@ -33,9 +33,6 @@ if __name__ == '__main__':
     semantic_orientation = ta.semantic_orientation(prob_terms, pmi)
     top_positive_terms, top_negative_terms = ta.top_semantic_terms(semantic_orientation, 10)
 
-    print(top_positive_terms)
-    print(top_negative_terms)
-
     # Generate vincent graphs for aggregated data
     key_value_table(top_positive_terms + top_negative_terms)
     timeseries_chart(ta.tweet_timeseries(tweet_dates))

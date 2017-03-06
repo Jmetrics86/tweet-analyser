@@ -74,9 +74,11 @@ def test_document_processing():
     for tweet in test_tweets:
         process_or_store(tweet, tweet_store)
 
-    target_counts = {'all_counter': Counter({'test_one': 2, 'test_two': 2, 'a': 1, 'is': 1, 'of': 1}),
-                     'hashtag_counter': Counter(),
-                     'terms_counter': Counter({'test_one': 2, 'test_two': 2})}
+    target_counts = {
+        'all_counter': Counter({'test_one': 2, 'test_two': 2, 'a': 1, 'is': 1, 'of': 1}),
+        'hashtag_counter': Counter(),
+        'terms_counter': Counter({'test_one': 2, 'test_two': 2})
+    }
 
     counts, term_co, doc_count = document_processing(tweet_store)
 
