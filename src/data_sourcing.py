@@ -46,7 +46,7 @@ def analysis_decider():
     source_choice = 0
     while source_choice not in ['1', '2']:
         source_choice = input(
-            "Would you like to analyse a user timeline(1) or search a hashtag(2)?")
+            "Would you like to analyse a user timeline(1) or search a hashtag(2): ")
 
         if source_choice not in ['1', '2']:
             print("Error! Acceptable inputs are 1 (timeline) or 2 (term)")
@@ -89,11 +89,11 @@ def data_router(source_choice, api_connection):
 
     if source_choice == 1:
         user_id = get_user(api_connection)
-        tweets = get_timeline(api_connection, user_id, items=200)
+        tweets = get_timeline(api_connection, user_id, items=400)
 
     elif source_choice == 2:
         hashtag = get_hashtag()
-        tweets = search_hashtag(api_connection, hashtag, items=200)
+        tweets = search_hashtag(api_connection, hashtag, items=400)
 
     else:
         tweets = []

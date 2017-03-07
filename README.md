@@ -17,9 +17,9 @@ neutral each term is.
 
 ### Prerequisites
 
-* Python 3.5+ (https://www.python.org/downloads/)
+* [Python 3.5+](https://www.python.org/downloads/)
 
-* Twitter OAuth access tokens (https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
+* [Twitter OAuth access tokens](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 
 ### Installing
 
