@@ -16,7 +16,7 @@ class ReportManager:
         server = SimpleHTTPWebServer(url, port)
         threading.Thread(target=server.start_server).start()
 
-        print("Report ready to view at http://%s:%d/report/chart.html \n"
+        print("Report ready to view at http://%s:%d/report/tweet_analysis.html \n"
               "Report will be available for the next %s minutes" % (url, port, minutes_to_wait))
         time.sleep(minutes_to_wait * 60)
 

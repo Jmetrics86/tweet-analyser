@@ -63,7 +63,7 @@ tell us much about the context of people are saying. Instead we can look at a si
 avoid this being dominated by useless information we remove most commonly appearing words that hold little interest, such
  as "a", "the", "is", "that", etc.
 
- \<GRAPH HERE>
+ []
 
  Here we see that the most commonly appearing terms are those we would probably expect for a Dark Souls Let's Play:
  "Dark", "Souls", etc. While this gives us some idea of the context of the tweets, it ...

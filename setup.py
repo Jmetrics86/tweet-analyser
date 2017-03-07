@@ -16,7 +16,7 @@ setup(
     long_description=readme,
     author='Joel Lutman',
     author_email='joellutman@gmail.com',
-    url='https://github.com/jhole89/twitterAnalyser',
+    url='https://github.com/jhole89/tweet-analyser',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )

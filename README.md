@@ -30,9 +30,9 @@ neutral each term is.
 3. Create a credentials.properties file based on the template in src/resources with your Twitter OAuth consumer and
 access tokens as per the prerequisites
 
-4. Set the environment:
+4. Set the environment: `pip install -r requirements.txt`
 
-5. Run the application: `python src/main.py`
+5. From tweet-analyser/src run the application: `python main.py`
 
 ## Running the tests
 
@@ -45,7 +45,7 @@ pytest <all>
 ### Coding style
 
 Tweet Analyser is PEP8 complaint but uses a max-line-length=100.  This can be checked from the command line with:
-```bash
+```unix
 pep8 --statistics --max-line-length=100 twitterAnalyser
 ```
 
@@ -54,6 +54,7 @@ pep8 --statistics --max-line-length=100 twitterAnalyser
 * [Python3](https://www.python.org/downloads/) [(Anaconda)](https://www.continuum.io/downloads)
 * [Tweepy](https://github.com/tweepy/tweepy)
 * [Pandas](http://pandas.pydata.org/)
+* [PyTest](http://doc.pytest.org/en/latest/)
 * [Vincent](https://vincent.readthedocs.io/en/latest/)
 * [d3.js](https://d3js.org/)
 
