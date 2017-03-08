@@ -18,7 +18,7 @@ developer) we can still get some interesting results.
 <b>Prepare To Try</b> uses a couple of key terms (<i>#PrepareToTry, @PrepareToTry, #PTT, #Finchy</i>) so we instantly have a
 few choices about what we want to investigate. However if we weren't familiar with the source material it wouldn't be
 unusual to start with the user timeline to see whats the user is saying, in this case we'll search for the offical usertag
-<i>@PrepareToTry<i>.
+<i>@PrepareToTry</i>.
 
 From the command line:
 ```bash
@@ -49,11 +49,14 @@ is saying.  What we're interested at here is what the @PrepareToTry user is sayi
 
 #### Tweet Timeline
 
-The first thing we can see is the recent trend of tweets from @PrepareToTry. We can see that there was previously
-some chatter, though not much recently. A quick google of PrepareToTry will shown us that this is because the last
-episode of PrepareToTry aired on the 24th February 2017 (at least, the last till the next season - fingers crossed) so
-we see lots of mentions on around the 24th and a die off since, basically people are forgetting and the boys need to get
-back on the air.
+The first thing we can see is the recent trend of tweets from @PrepareToTry. We can see a very variable trend, though with
+some pre-existing knowledge we can attribute these peaks and dips. The peak in October was due to FinchyFest - their live
+show at the end of Season 2, drop between this and December was whilst they were off the air, the peak in late December was
+due to their short Resident Evil season, and the peak in March was due them doing the Dark Souls Artorias of the Abyss DLC.
+Since then the tweets have died off due to them not being on the air and promoting new episodes.
+
+![Tweet Timeline](PTT_timeline.png)
+
 
 #### Top Terms
 
@@ -93,5 +96,49 @@ a well known phrase from the Dark Souls game.  Along with our "dark,souls" pair 
 about the Dark Souls games.
 * "live,show" - again, if we didn't already know it this would confirm to us that they do live shows.
 
-
 #### Top Hashtags
+
+On top of looking at what the @PrepareToTry account is saying, we can also look at what hashtags they are using. Hashtags are
+useful as they are a great way of looking at viral trends as they can be used by anyone and do not required a hashtag to aready
+exist - anyone can start one.
+
+![Top Hashtags by @PrepareToTry](PTT_top_hashtags.png)
+
+Unsurprisingly we see that the top hashtag is "#preparetotry", however we also see "#darksouls", "#preparetotrylive",
+"#praisethesun", "#finchyfest", and "#darksouls3". None of these tell us anything we haven't already discovered, however
+they would re-enforce any assumptions we may had made if we didn't have any pre-existing knowledge. If we wanted to continue
+this line of thought we could now look at analysing the tweets from the #PrepareToTry hashtag.
+
+#### Top Usertags
+
+Similar to looking at hashtags, we can also filter our results to mentions of other users. This should help tell us who else the
+user is talking to, which we can uses to piece together a circle of inference and user network.
+
+![Top Userstags by @PrepareToTry](PTT_top_users.png)
+
+We can see that the @PrepareToTry tag is being mentioned a lot, however not the highest, that goes to "@roryhaspowers", "@cymrogav",
+"@krupa". Given how much higher these are than any other, it's a fair to assume that they have something to do with the show - in
+fact they are the hosts of the show.
+
+#### Top Positive/Negative Terms
+
+So we've now been able discover how frequently the user has been tweeting, what the user has been tweeting, the context of what they
+ have been tweeting, and who they having talking to; however what we haven't looked at is how they have been saying it. What we mean
+ by this is trying to understand how positive or negative they are about certain terms - understanding the undertones to their tweets.
+ We do this by summing the probability of a term appearing with known positive and negative words.
+
+![Top Positive/Negative Terms by @PrepareToTry](term_positivity.png)
+
+Although not perfect, we see a number of interesting results here. We see a lot of positivity being used in tweets containing:
+* "christmas", "gift" - not surprising, who doesn't love gifts
+* "finchy" - the guys love Finchy
+* "lore" - lore is a big part of Dark Souls and forms the rick backstory to the games
+* "couldn't" - ok so this one got me for a while, until I worked out this was most likely due to being used in positive sentences like
+"couldn't believe ..." or "couldn't have done it without ..."
+
+In terms of negativity we can really infer some more interesting results:
+* "footage", "editing" - clearly the guys are not fans of editing their footage
+* "defeated", "balls" - both can be considered pretty negative terms in themselves so not too surprising to see them rated low
+* "boss" - probably my favourite result as anyone familiar with Dark Souls will know that bosses are filled with endless hours of pain
+and torture. I liked this result as "boss" itself is not a negative term but in the context of Dark Souls it definitely is, and being
+ranked the lowest validates the algorithm used to analyse the data.
