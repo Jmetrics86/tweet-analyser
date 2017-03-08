@@ -42,4 +42,4 @@ if __name__ == '__main__':
     bar_chart('top_usertags', word_counters['tag_counter'].most_common(10))
 
     # Run report on local webserver
-    ReportManager('user').run_report(10, 'localhost', 8000)
+    ReportManager('localhost', 8000).run_report(5)
