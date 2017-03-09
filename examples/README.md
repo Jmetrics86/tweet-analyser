@@ -8,7 +8,7 @@ may have little pre-existing knowledge of, and take you down a path of explorati
 
 ## Where Do I Start
 
-Start with the [@PrepareToTry exploration](@PrepareToTry/@PrepareToTry.md) as everything else
+Start with the [@PrepareToTry exploration](@PrepareToTry/README.md) as everything else
 branches of of this. It's the most detailed one and explains some of the working going on in
 the background that has enabled us to do our analysis. From there you can look at any other
 examples as these are shorter and concern themselves with only the result, not how we got there.
