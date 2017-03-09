@@ -4,7 +4,6 @@ import threading
 import time
 
 from utils.SimpleHTTPWebServer import SimpleHTTPWebServer
-from utils.WebsiteToPdf import WebSiteToPdf
 
 
 class ReportManager:
@@ -22,8 +21,6 @@ class ReportManager:
         print("Report ready to view at %s \n"
               "Report will be available for the next %s minutes" % (self.address, minutes_to_wait))
         time.sleep(minutes_to_wait * 60)
-
-        WebSiteToPdf(self.address, "tweet_analysis_report_" + time.strftime("%Y%m%d%H%M%S") + ".pdf").convert_site()
 
         assassin = threading.Thread(target=server.stop_server)
         assassin.daemon = True

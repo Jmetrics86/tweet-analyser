@@ -27,14 +27,12 @@ Would you like to analyse a user timeline(1) or search a hashtag(2): 1
 Please enter the twitter screen_name: PrepareToTry
 Report ready to view at http://localhost:8000/report/tweet-analysis.html
 Report will be available for the next 10 minutes
-Save http://localhost:8000/report/tweet-analysis.html to PDF (Y/N)? Y
 ```
 
 As above the application asks the user whether they would like to search a user's timeline, or search for a hashtag.
 Since we are decided to search for the @PrepareToTry user we choose option 1, and enter PrepareToTry as the user
 we want to search for. Our results are made available at http://localhost:8000/report/tweet-analysis.html using a WebServer
-we spin up in the background and is available for viewing for number minutes (you can tweek this in main.py). We may also
-want to see these results later so specify to save this as a PDF document.
+we spin up in the background and is available for viewing for number minutes (you can tweek this in main.py).
 
 ### Results
 
@@ -55,7 +53,7 @@ show at the end of Season 2, drop between this and December was whilst they were
 due to their short Resident Evil season, and the peak in March was due them doing the Dark Souls Artorias of the Abyss DLC.
 Since then the tweets have died off due to them not being on the air and promoting new episodes.
 
-![Tweet Timeline](PTT_timeline.png)
+![Tweet Timeline](images/PTT_timeline.png)
 
 
 #### Top Terms
@@ -65,7 +63,7 @@ context of what the show is saying. Instead we can look at a simple aggregation 
 to see what terms are appearing most frequently in tweets by @PrepareToTry. To avoid this being dominated by useless
 information we remove most commonly appearing words that hold little interest, such as "a", "the", "is", "that", etc.
 
-![Top Terms by @PrepareToTry](PTT_top_terms.png)
+![Top Terms by @PrepareToTry](images/PTT_top_terms.png)
 
  Here we see that some of the most commonly appearing terms are ones we could have expected such as:
   * "prepare", "try" - parts of the name
@@ -82,7 +80,7 @@ information we remove most commonly appearing words that hold little interest, s
  used with others.  For example if we take "episode" the context of this changes when used in conjunction with "new" vs "old",
  or "great" vs "terrible".  Instead we can take the same view and look at the top pair's of terms.
 
-![Top Pair-Terms by @PrepareToTry](PTT_top_pairs.png)
+![Top Pair-Terms by @PrepareToTry](images/PTT_top_pairs.png)
 
 Again we should be unsurprised to see that the top pair-term is the name of the show "prepare,try" and also ranked high is
 "episode,new" - so we can tell that they frequently tweet about new episodes being out; however we are already starting to see
@@ -102,7 +100,7 @@ On top of looking at what the @PrepareToTry account is saying, we can also look 
 useful as they are a great way of looking at viral trends as they can be used by anyone and do not required a hashtag to aready
 exist - anyone can start one.
 
-![Top Hashtags by @PrepareToTry](PTT_top_hashtags.png)
+![Top Hashtags by @PrepareToTry](images/PTT_top_hashtags.png)
 
 Unsurprisingly we see that the top hashtag is "#preparetotry", however we also see "#darksouls", "#preparetotrylive",
 "#praisethesun", "#finchyfest", and "#darksouls3". None of these tell us anything we haven't already discovered, however
@@ -114,7 +112,7 @@ this line of thought we could now look at analysing the tweets from the #Prepare
 Similar to looking at hashtags, we can also filter our results to mentions of other users. This should help tell us who else the
 user is talking to, which we can uses to piece together a circle of inference and user network.
 
-![Top Userstags by @PrepareToTry](PTT_top_users.png)
+![Top Userstags by @PrepareToTry](images/PTT_top_users.png)
 
 We can see that the @PrepareToTry tag is being mentioned a lot, however not the highest, that goes to "@roryhaspowers", "@cymrogav",
 "@krupa". Given how much higher these are than any other, it's a fair to assume that they have something to do with the show - in
@@ -127,7 +125,7 @@ So we've now been able discover how frequently the user has been tweeting, what 
  by this is trying to understand how positive or negative they are about certain terms - understanding the undertones to their tweets.
  We do this by summing the probability of a term appearing with known positive and negative words.
 
-![Top Positive/Negative Terms by @PrepareToTry](term_positivity.png)
+![Top Positive/Negative Terms by @PrepareToTry](images/term_positivity.png)
 
 Although not perfect, we see a number of interesting results here. We see a lot of positivity being used in tweets containing:
 * "christmas", "gift" - not surprising, who doesn't love gifts
