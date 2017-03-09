@@ -74,7 +74,7 @@ def search_hashtag(twitter_connection, hashtag, items=1):
 
     json_store = []
     try:
-        for status in Cursor(twitter_connection.search, q=hashtag).items(items):
+        for status in Cursor(twitter_connection.search, q=hashtag, count=100).items(items):
             process_or_store(status._json, json_store)
     except RateLimitError:
         rate_error()

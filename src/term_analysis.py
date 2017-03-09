@@ -94,6 +94,6 @@ def tweet_timeseries(timeseries_dates):
     idx = pandas.DatetimeIndex(timeseries_dates)
     series = pandas.DataFrame(ones, idx)
 
-    resampled_series = series.resample('W').sum().fillna(0)
+    resampled_series = series.resample('D').sum().fillna(0)
 
     return resampled_series

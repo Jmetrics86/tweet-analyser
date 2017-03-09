@@ -1,4 +1,4 @@
-# PrepareToTry Tweet Analysis
+# @PrepareToTry Tweet Analysis
 
 ## Background
 
@@ -43,7 +43,7 @@ As a note we should differentiate between searching for a hashtag such as #Prepa
 hashtag, while scanning the @PrepareToTry user timeline will return that user's timeline which usually contains only that
 user's tweets.  It's a subtle but significant difference between whats been said about that hashtag, and what that user
 is saying.  What we're interested at here is what the @PrepareToTry user is saying, so lets head over to the
-[report.](http://localhost:8000/report/tweet-analysis.html)
+report.
 
 #### Tweet Timeline
 
