@@ -4,7 +4,7 @@
 
 We previously saw in the @PrepareToTry analysis that the top Hashtag was #PrepareToTry, so lets have a look at that. When
 searching for hashtags we are limited to receiving tweets from only the last 7 days due to Twitter's API, so that does give
-us a smaller scope of results to anaylse.
+us a smaller scope of results to analyse.
 
 ## Tweet Analysis
 
