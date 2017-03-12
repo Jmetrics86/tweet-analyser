@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from utils.ConfigReader import ConfigReader
+from src.utils.ConfigReader import ConfigReader
 
 
 class TestConfigReader:

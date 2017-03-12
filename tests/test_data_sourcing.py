@@ -2,9 +2,9 @@
 
 import unittest.mock
 
-from data_sourcing import *
-from utils.ConfigReader import ConfigReader
-from utils.TwitterAuthenticate import TwitterAuthenticate
+from src.data_sourcing import *
+from src.utils.ConfigReader import ConfigReader
+from src.utils.TwitterAuthenticate import TwitterAuthenticate
 
 
 def test_get_user():
@@ -16,8 +16,8 @@ def test_get_user():
                                              config.access_token_key, config.access_token_secret
                                              ).request_auth().make_connection()
 
-    with unittest.mock.patch('builtins.input', return_value='jhole89'):
-        assert get_user(twitter_connection) == 3291780214
+    with unittest.mock.patch('builtins.input', return_value='HomerSimpson'):
+        assert get_user(twitter_connection) == 758608
 
 
 def test_get_hashtag():
@@ -63,7 +63,7 @@ def test_get_timeline():
                                      config.access_token_key, config.access_token_secret
                                      ).request_auth().make_connection()
 
-    user_id = 3291780214
+    user_id = 758608
     stored_tweets = get_timeline(connection, user_id)
 
     assert stored_tweets
@@ -91,7 +91,7 @@ def test_data_router():
                                      config.access_token_key, config.access_token_secret
                                      ).request_auth().make_connection()
 
-    with unittest.mock.patch('builtins.input', return_value='jhole89'):
+    with unittest.mock.patch('builtins.input', return_value='HomerSimpson'):
         assert data_router(1, connection)
 
     with unittest.mock.patch('builtins.input', return_value='#hashtag'):

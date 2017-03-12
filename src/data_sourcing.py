@@ -4,7 +4,7 @@ import json
 
 from tweepy import Cursor, RateLimitError, TweepError
 
-from exceptions.sourcing import rate_error, tweepy_sourcing_error
+from src.exceptions.sourcing import rate_error, tweepy_sourcing_error
 
 
 def get_user(twitter_connection):

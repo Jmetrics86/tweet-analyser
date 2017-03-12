@@ -4,7 +4,7 @@ import threading
 
 import requests
 
-from utils.SimpleHTTPWebServer import SimpleHTTPWebServer
+from src.utils.SimpleHTTPWebServer import SimpleHTTPWebServer
 
 
 class TestWebServer:

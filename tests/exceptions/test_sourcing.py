@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from exceptions.sourcing import rate_error, tweepy_sourcing_error
+from src.exceptions.sourcing import rate_error, tweepy_sourcing_error
 
 
 def test_rate_error(capfd):
@@ -9,7 +9,7 @@ def test_rate_error(capfd):
     rate_error()
     out, err = capfd.readouterr()
 
-    assert out == "Error! Twitter rate limit reach. Wait 15 mins and try again."
+    assert out == "Error! Twitter rate limit reach. Wait 15 mins and try again.\n"
 
 
 def test_tweepy_sourcing_error(capfd):
@@ -18,4 +18,4 @@ def test_tweepy_sourcing_error(capfd):
     tweepy_sourcing_error()
     out, err = capfd.readouterr()
 
-    assert out == "Error! Unable to retrieve tweets."
+    assert out == "Error! Unable to retrieve tweets.\n"

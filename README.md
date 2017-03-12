@@ -36,11 +36,63 @@ access tokens as per the prerequisites
 
 ## Running the tests
 
-We use PyTest as our test framework
+We use PyTest as our test framework. We can run the test suite from tweet-analyser/tests using: `pytest`
+
+```unix
+tweet-analyser/tests$ pytest
+=================================================== test session starts ================================================
+platform linux -- Python 3.5.2, pytest-3.0.5, py-1.4.32, pluggy-0.4.0
+rootdir: /home/joel/Development/tweet-analyser, inifile:
+collected 16 items
+
+test_data_sourcing.py .......
+test_text_wrangling.py .......
+exceptions/test_sourcing.py ..
+
+================================================ 16 passed in 9.10 seconds =============================================
+```
 
 ### Test Coverage
 
-pytest <all>
+To generate test coverage reports we can use pytest-cov:
+```unix
+tweet-analyser/tests$ py.test --cov-report term --cov=../src
+======================================= test session starts ==================================================
+platform linux -- Python 3.5.2, pytest-3.0.5, py-1.4.32, pluggy-0.4.0
+rootdir: /home/joel/Development/tweet-analyser, inifile:
+plugins: cov-2.4.0
+collected 16 items
+
+test_data_sourcing.py .......
+test_text_wrangling.py .......
+exceptions/test_sourcing.py ..
+
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                                                                     Stmts   Miss  Cover
+--------------------------------------------------------------------------------------------
+/home/joel/Development/tweet-analyser/src/__init__.py                        0      0   100%
+/home/joel/Development/tweet-analyser/src/data_sourcing.py                  54      9    83%
+/home/joel/Development/tweet-analyser/src/exceptions/__init__.py             0      0   100%
+/home/joel/Development/tweet-analyser/src/exceptions/sourcing.py             4      0   100%
+/home/joel/Development/tweet-analyser/src/main.py                           24     24     0%
+/home/joel/Development/tweet-analyser/src/report/ReportManager.py           16     16     0%
+/home/joel/Development/tweet-analyser/src/report/__init__.py                 0      0   100%
+/home/joel/Development/tweet-analyser/src/report/data_visualisation.py      14     14     0%
+/home/joel/Development/tweet-analyser/src/term_analysis.py                  48     48     0%
+/home/joel/Development/tweet-analyser/src/text_wrangling.py                 57      1    98%
+/home/joel/Development/tweet-analyser/src/utils/ConfigReader.py              9      0   100%
+/home/joel/Development/tweet-analyser/src/utils/ListLoader.py                8      8     0%
+/home/joel/Development/tweet-analyser/src/utils/SimpleHTTPWebServer.py      12     12     0%
+/home/joel/Development/tweet-analyser/src/utils/TwitterAuthenticate.py      28      9    68%
+/home/joel/Development/tweet-analyser/src/utils/__init__.py                  0      0   100%
+--------------------------------------------------------------------------------------------
+TOTAL                                                                      274    141    49%
+
+
+=================================== 16 passed in 10.74 seconds ==========================================
+
+```
+
 
 ### Coding style
 

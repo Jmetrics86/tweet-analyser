@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from utils.ConfigReader import ConfigReader
-from utils.TwitterAuthenticate import TwitterAuthenticate
+from src.utils.ConfigReader import ConfigReader
+from src.utils.TwitterAuthenticate import TwitterAuthenticate
 
 
 class TestTwitterAuthenticate:

@@ -6,7 +6,7 @@ from operator import itemgetter
 
 import pandas
 
-from utils.ListLoader import ListLoader
+from src.utils.ListLoader import ListLoader
 
 
 def top_cooccorrent_terms(cooccurence_matrix):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from utils.ListLoader import ListLoader
+from src.utils.ListLoader import ListLoader
 
 
 class TestListLoader:

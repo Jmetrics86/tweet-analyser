@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import term_analysis as ta
-from data_sourcing import analysis_decider, data_router
-from report.ReportManager import ReportManager
-from report.data_visualisation import bar_chart, timeseries_chart, key_value_table
-from text_wrangling import document_processing
-from utils.ConfigReader import ConfigReader
-from utils.TwitterAuthenticate import TwitterAuthenticate
+import src.term_analysis as ta
+from src.data_sourcing import analysis_decider, data_router
+from src.report.ReportManager import ReportManager
+from src.report.data_visualisation import bar_chart, timeseries_chart, key_value_table
+from src.text_wrangling import document_processing
+from src.utils.ConfigReader import ConfigReader
+from src.utils.TwitterAuthenticate import TwitterAuthenticate
 
 if __name__ == '__main__':
     # Authenticate and open the connection to Twitter

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from data_sourcing import process_or_store
-from text_wrangling import *
+from src.data_sourcing import process_or_store
+from src.text_wrangling import *
 
 
 def test_regex_tokens():
@@ -32,7 +32,7 @@ def test_preprocess():
     test_tag = "@test"
     source_string = " ".join([test_string, test_hashtag, test_emoji, test_url, test_tag])
 
-    target = ['This', 'is', 'a', 'different', 'string', '2', 'tokenize',
+    target = ['this', 'is', 'a', 'different', 'string', '2', 'tokenize',
               '#hashtag', ':)', 'https://www.google.co.uk', '@test']
 
     assert preprocess(source_string) == target
@@ -45,13 +45,18 @@ def test_common_terms():
 
 
 def test_term_processing():
+
     stopwords = common_terms()
     terms = ['this', 'is', 'a', 'string', '2', 'tokenize',
              '#hashtag', ':)', 'https://www.google.co.uk', '@test']
     target_tags = ['#hashtag']
+    target_users = ['@test']
     target_terms = ['string', '2', 'tokenize', ':)', 'https://www.google.co.uk']
-    processed_tags, processed_terms = term_processing(terms, stopwords)
+
+    processed_tags, processed_users, processed_terms = term_processing(terms, stopwords)
+
     assert processed_tags == target_tags
+    assert processed_users == target_users
     assert processed_terms == target_terms
 
 
@@ -67,9 +72,9 @@ def test_document_processing():
     """Test should generate terms counters and co-occurance matrix given a collection of tweets"""
 
     tweet_store = []
-    test_tweets = [{"text": "test_one test_two", "foo": "bar"},
-                   {"text": "test_one test_two", "foo": "bar"},
-                   {"text": "a is of", "foo": "bar"}]
+    test_tweets = [{"text": "test_one test_two", "foo": "bar", "created_at": "2017-01-01 09:00:00"},
+                   {"text": "test_one test_two", "foo": "bar", "created_at": "2017-01-01 09:00:00"},
+                   {"text": "a is of", "foo": "bar", "created_at": "2017-01-01 09:00:00"}]
 
     for tweet in test_tweets:
         process_or_store(tweet, tweet_store)
@@ -77,11 +82,13 @@ def test_document_processing():
     target_counts = {
         'all_counter': Counter({'test_one': 2, 'test_two': 2, 'a': 1, 'is': 1, 'of': 1}),
         'hashtag_counter': Counter(),
-        'terms_counter': Counter({'test_one': 2, 'test_two': 2})
+        'tag_counter': Counter(),
+        'terms_counter': Counter({'test_one': 2, 'test_two': 2}),
+        'doc_counter': 2
     }
 
-    counts, term_co, doc_count = document_processing(tweet_store)
+    counts, dates, term_co = document_processing(tweet_store)
 
     assert counts == target_counts
     assert term_co
-    assert doc_count == 2
+    assert len(dates) == 3
