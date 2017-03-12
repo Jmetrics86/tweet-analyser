@@ -39,10 +39,9 @@ Analysing the timeline of the hashtag #PrepareToTry allows us to analyse the rec
 
 Here we see that some of the most commonly appearing terms are less predictable than when we looked at @PrepareToTry:
  * "season", "2" - ok so this one is a little obvious
- * "episode", "new" - common for a TV shown
+ * "series" - common for a TV shown
  * "slugs" - we know this one, it's the name given to the fans of Prepare To Try
- * "praise", "sun" - again, we now know this is from the "Praise the Sun" catch phrase
- * "amp", "thing", "best" - all of these are ones we would have failed to guess
+ * "amp", "thing", "best", "fever" - all of these are ones we would have failed to guess
 
 #### Top Pair's of Terms
 
@@ -57,10 +56,31 @@ Looking at the pair's of terms we now get to see some interesting pairs, and eve
 
 ![Top Hashtags by @PrepareToTry](images/PTT_top_hashtags.png)
 
+Given that we are searching by the #PrepareToTry hashtag, it's unsurprising that it is also the top hashtag
+- it will be in every tweet result.  However looking at the rest:
+* "#givetheboysjobs" - this is in reference to a tag they tried to get viral after completing Dark Sousl 3.  Given
+that we see it as the second highest hashtag we can assume it did get some traction
+* "#finchy" - the name of the main character
+* "#darksoulsgame", "#darksouls", "#darksouls3" - all references to the Dark Souls games
+* "#ptt" - given that twitter limits tweets to 120 characters it's not surprising when we see shortend versions of
+other hashtags, in this case the #PrepareToTry hashtag
+* "#solaireofastoria", "#praisethesun" - a little more obscure but again these are references to the franchise
+
 #### Top Usertags
+
+Here we see largely the same trend of users as we saw when analysing @PrepareToTry:
 
 ![Top Userstags by @PrepareToTry](images/PTT_top_users.png)
 
+* "@cymrogav", "@preparetotry", "@roryhaspowers", "@krupa" - handles used by the hosts
+* "@ignuk", "@ign" - handles used by IGN - the company publishing the content
+
 #### Top Positive/Negative Terms
 
+Finally we look at the positivity of some of the words being used in these tweets.
+
 ![Top Positive/Negative Terms by @PrepareToTry](images/term_positivity.png)
+
+We can see that there is a lot of positivity in regards to the hosts and the show, for example "dans" will be a
+reference to Daniel Krupa, one of the hosts; while we see negativity mainly around the end of the show, for example
+"finished".
