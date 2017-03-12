@@ -31,11 +31,11 @@ what is being said about #PrepareToTry.
 
 Analysing the timeline of the hashtag #PrepareToTry allows us to analyse the recent popularity trend of the show.
 
-![Tweet Timeline](images/#PTT_timeline.png)
+![Tweet Timeline](images/PTT_timeline.png)
 
 #### Top Terms
 
-![Top Terms by @PrepareToTry](images/#PTT_top_terms.png)
+![Top Terms by @PrepareToTry](images/PTT_top_terms.png)
 
 Here we see that some of the most commonly appearing terms are less predictable than when we looked at @PrepareToTry:
  * "season", "2" - ok so this one is a little obvious
@@ -48,19 +48,19 @@ Here we see that some of the most commonly appearing terms are less predictable 
 
 Looking at the pair's of terms we now get to see some interesting pairs, and even some emoji's being captured.
 
-![Top Pair-Terms by @PrepareToTry](images/#PTT_top_pairs.png)
+![Top Pair-Terms by @PrepareToTry](images/PTT_top_pairs.png)
 
 * "2,season" - Season 2, given that this is the season they have just concluded this makes sense to be highly rated
 * "telly,:smiley:"
 
 #### Top Hashtags
 
-![Top Hashtags by @PrepareToTry](images/#PTT_top_hashtags.png)
+![Top Hashtags by @PrepareToTry](images/PTT_top_hashtags.png)
 
 #### Top Usertags
 
-![Top Userstags by @PrepareToTry](images/#PTT_top_users.png)
+![Top Userstags by @PrepareToTry](images/PTT_top_users.png)
 
 #### Top Positive/Negative Terms
 
-![Top Positive/Negative Terms by @PrepareToTry](images/#term_positivity.png)
+![Top Positive/Negative Terms by @PrepareToTry](images/term_positivity.png)
