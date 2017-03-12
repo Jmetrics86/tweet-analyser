@@ -20,9 +20,9 @@ few choices about what we want to investigate. However if we weren't familiar wi
 unusual to start with the user timeline to see whats the user is saying, in this case we'll search for the offical usertag
 <i>@PrepareToTry</i>.
 
-From the command line:
+From tweet-analyser/src via command line:
 ```bash
-$ python src/main.py
+$ python main.py
 Would you like to analyse a user timeline(1) or search a hashtag(2): 1
 Please enter the twitter screen_name: PrepareToTry
 Report ready to view at http://localhost:8000/report/tweet-analysis.html

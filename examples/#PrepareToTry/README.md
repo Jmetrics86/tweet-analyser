@@ -10,9 +10,9 @@ us a smaller scope of results to analyse.
 
 ### Usage
 
-From the command line:
+From tweet-analyser/src via command line:
 ```bash
-$ python src/main.py
+$ python main.py
 Would you like to analyse a user timeline(1) or search a hashtag(2): 2
 Please enter the hashtag to search with: #PrepareToTry
 Report ready to view at http://localhost:8000/report/tweet-analysis.html
