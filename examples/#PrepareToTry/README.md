@@ -33,6 +33,10 @@ Analysing the timeline of the hashtag #PrepareToTry allows us to analyse the rec
 
 ![Tweet Timeline](images/PTT_timeline.png)
 
+We see that most activity of tweets using #PrepareToTry was on Friday 3rd March, when they last posted context.
+Since then the amount of people tweeting with the hashtag has dropped considerably due to the interest dropping
+without more content being released.
+
 #### Top Terms
 
 ![Top Terms by @PrepareToTry](images/PTT_top_terms.png)
